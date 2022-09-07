@@ -1,9 +1,9 @@
 var bird;
 
 function setup() {
-  createCanvas(500, 400);
+  createCanvas(600, 400);
 
-  bird = new Bird(100, 200);
+  bird = new Bird(150, 200);
 
 }
 
@@ -28,7 +28,7 @@ class Bird {
     this.x = x;
     this.y = y;
     this.vy = 0;
-    this.gravity = 0.2;
+    this.gravity = 0.3;
   }
 
   drawBird() {
