@@ -28,7 +28,7 @@ class Bird {
     this.x = x;
     this.y = y;
     this.vy = 0;
-    this.gravity = 0.3;
+    this.gravity = 0.26;
   }
 
   drawBird() {
