@@ -12,8 +12,6 @@ function setup() {
 function draw() {
   background(225);
    
-
-
   bird.drawBird();
 
 }
@@ -53,4 +51,3 @@ class Bird {
 }
 
 class Pipe()
-  
