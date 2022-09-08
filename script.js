@@ -1,4 +1,5 @@
 var bird;
+var pipe;
 
 function setup() {
   createCanvas(600, 400);
@@ -50,3 +51,6 @@ class Bird {
     }
   }
 }
+
+class Pipe()
+  
