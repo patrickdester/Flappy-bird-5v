@@ -1,5 +1,6 @@
 var bird;
-var pipe;
+var pipes = [];
+var spacing;
 
 function setup() {
   createCanvas(600, 400);
@@ -11,7 +12,7 @@ function setup() {
 
 function draw() {
   background(225);
-   
+
   bird.drawBird();
 
 }
@@ -50,4 +51,7 @@ class Bird {
   }
 }
 
-class Pipe()
+class Pipes {
+  
+}
+
