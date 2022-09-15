@@ -25,8 +25,8 @@ function draw() {
 
   if (frameCount % 60 == 0) {
     // console.log(framecount);
-    let newPipeBot = new Pipes(640, 300, 30, 200, -5, "green");
-    let newPipeTop = new Pipes(640, 0, 30, 150, -5, "green");
+    let newPipeBot = new Pipes(640, 300, 30, 200, -4, "green");
+    let newPipeTop = new Pipes(640, 0, 30, 150, -4, "green");
     pipes.push(newPipeBot)
     pipes.push(newPipeTop)
     console.log(pipes.length)
@@ -34,7 +34,17 @@ function draw() {
 
   pipes.forEach(pipe => {
     pipe.drawPipes()
+
+    if (pipes.isColliding()) {
+      this.color = "red";
+    }
+    else {
+      this.color = "green"
+    }
   });
+
+
+
   bird.drawBird();
 
 
@@ -55,7 +65,7 @@ class Bird {
     this.vy = 0;
     this.velocity = 0;
     this.acceleration = 0.9;
-    this.gravity = 0.25;
+    this.gravity = 0.22;
   }
 
   drawBird() {
@@ -86,6 +96,7 @@ class Pipes {
     this.h = h;
     this.vx = vx;
     this.color = color;
+    
   }
 
   drawPipes() {
@@ -93,4 +104,17 @@ class Pipes {
     this.x = this.x + this.vx;
     rect(this.x, this.y, this.w, this.h)
   }
+
+
+  isColliding() {
+    //
+    if (bird.x + bird.w.this.x && bird.x < this.x + this.w) {
+
+      if (bird.y + bird.h > this.y && bird.y < this.y + this.h) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
+
