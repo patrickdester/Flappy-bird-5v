@@ -1,9 +1,10 @@
 var bird;
 var pipes = [];
 var spacing;
+var pipe1, pipe2;
 
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(640, 360);
 
   bird = new Bird(150, 200);
 
@@ -21,6 +22,7 @@ function setup() {
 function draw() {
   background(225);
 
+
   if (frameCount % 60 == 0) {
     // console.log(framecount);
     let newPipeBot = new Pipes(640, 300, 30, 200, -5, "green");
@@ -28,12 +30,14 @@ function draw() {
     pipes.push(newPipeBot)
     pipes.push(newPipeTop)
     console.log(pipes.length)
-
   }
 
+  pipes.forEach(pipe => {
+    pipe.drawPipes()
+  });
   bird.drawBird();
 
-  
+
 
 }
 
@@ -49,7 +53,9 @@ class Bird {
     this.x = x;
     this.y = y;
     this.vy = 0;
-    this.gravity = 0.26;
+    this.velocity = 0;
+    this.acceleration = 0.9;
+    this.gravity = 0.25;
   }
 
   drawBird() {
@@ -60,9 +66,9 @@ class Bird {
 
     this.y += this.vy;
 
-    if (this.y > 380) {
+    if (this.y > 340) {
       this.vy = 0;
-      this.y = 380;
+      this.y = 340;
     }
 
     if (this.y < 0) {
@@ -73,18 +79,18 @@ class Bird {
 }
 
 class Pipes {
-  constructor(x, y, w, h, vx, color){
-   this.x = x;
-   this.y = y;
-   this.w = w;
-   this.h = h;
-   this.vx = vx;
-   this.color = color;
+  constructor(x, y, w, h, vx, color) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.vx = vx;
+    this.color = color;
   }
 
-drawPipes() {
-  fill(this.color)
-  rect(this.x, this.y, this.w, this.h)
-  this.x = this.x + this.vx;
- }
+  drawPipes() {
+    fill(this.color)
+    this.x = this.x + this.vx;
+    rect(this.x, this.y, this.w, this.h)
+  }
 }
