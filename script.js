@@ -35,7 +35,7 @@ class Pipes {
     this.w = w;
     this.h = h;
     this.vx = vx;
-    this.color = color;
+    this.color =  color;
   }
 
   drawPipes() {
@@ -75,7 +75,7 @@ var pipe1, pipe2;
 
 function setup() {
   createCanvas(640, 360);
-
+  
   bird = new Bird(150, 200);
 
   pipe1 = new Pipes(640, 300, 30, 200, -5, "green")
@@ -88,7 +88,7 @@ function setup() {
 
 function draw() {
   background(225);
-
+  
   if (frameCount % 60 == 0) {
     // console.log(framecount);
     let newPipeBot = new Pipes(640, 300, 30, 200, -4, "green");
