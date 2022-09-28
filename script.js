@@ -5,9 +5,9 @@ class Bird {
     this.w = 30;
     this.h = 30;
     this.vy = 0;
-    this.velocity = 0;
-    this.acceleration = 0.9;
-    this.gravity = 0.22;
+    this.velocity = 1.3;
+    this.acceleration = 2;
+    this.gravity = 0.3;
   }
 
   drawBird() {
@@ -49,12 +49,10 @@ class Pipes {
   checkCollision() {
 
     if (bird.x + bird.w > this.x && bird.x < this.x + this.w) {
-
       if (bird.y + bird.h > this.y && bird.y < this.y + this.h) {
-        this.color = ("red")
+         console.log("hit")
       }
-    }
-
+    }   
   }
 }
 
@@ -67,13 +65,7 @@ var pipe1, pipe2;
 function setup() {
   createCanvas(640, 360);
 
-  bird = new Bird(150, 200);
-
-  pipe1 = new Pipes(640, 300, 30, 200, -5, "green")
-  pipe2 = new Pipes(640, 0, 30, 150, -5, "green")
-
-  pipes.push(pipe1);
-  pipes.push(pipe2);
+  bird = new Bird(150, 200);  
 }
 
 
@@ -82,8 +74,13 @@ function draw() {
 
   if (frameCount % 60 == 0) {
     // console.log(framecount);
-    let newPipeBot = new Pipes(640, 300, 30, 200, -4, "green");
-    let newPipeTop = new Pipes(640, 0, 30, 150, -4, "green");
+    let gapHeight = 150;
+    let randHeight = random(height - gapHeight);
+    
+    
+    let newPipeTop = new Pipes(640, 0, 30, randHeight, -4, "green");    
+    let newPipeBot = new Pipes(640, randHeight + gapHeight, 30, 200, -4, "green");
+    
     pipes.push(newPipeBot)
     pipes.push(newPipeTop)
     //console.log(pipes.length)
@@ -93,7 +90,6 @@ function draw() {
   pipes.forEach(pipe => {
     pipe.drawPipes();
     pipe.checkCollision();
-
   });
   bird.drawBird();
 }
