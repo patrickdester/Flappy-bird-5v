@@ -98,6 +98,8 @@ function draw() {
     //console.log(pipes.length)
     
   }
+  if (frameCount % 60 == 0) {
+    addPipes();
 
   pipes.forEach(pipe => {
     pipe.drawPipes();
@@ -113,5 +115,6 @@ function keyPressed() {
     bird.vy -= 5;
   }
 }
+
 
 
