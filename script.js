@@ -50,7 +50,7 @@ class Pipes {
 
     if (bird.x + bird.w > this.x && bird.x < this.x + this.w) {
       if (bird.y + bird.h > this.y && bird.y < this.y + this.h) {
-         console.log("hit")
+         gameState = 2
       }
     }   
   }
@@ -61,6 +61,8 @@ var bird;
 var pipes = [];
 var spacing;
 var pipe1, pipe2;
+var gameState = 0; // 0 = menu, 1 = game, 2 = gameover
+var x = 0
 
 function setup() {
   createCanvas(640, 360);
@@ -72,6 +74,20 @@ function setup() {
 function draw() {
   background(225);
 
+  text("gameState" + gameState, 25,25);
+
+  if (gameState == 0)  {
+    Menu();
+  }
+
+  if (gameState == 1)  {
+    game();
+  }
+
+  if (gameState == 2) {
+    gameOver();
+  }
+  
   if (frameCount % 60 == 0) {
     // console.log(framecount);
     let gapHeight = 150;
@@ -86,8 +102,6 @@ function draw() {
     //console.log(pipes.length)
 
   }
-  if (frameCount % 60 == 0) {
-    addPipes();
 
   pipes.forEach(pipe => {
     pipe.drawPipes();
@@ -102,7 +116,34 @@ function keyPressed() {
   if (keyCode == 32) {
     bird.vy -= 5;
   }
+  if (keyCode == 49) {
+    gameState = 0;
+  }
+
+  if (keyCode == 50) {
+    gameState = 1;
+  }
+
+  if (keyCode == 51) {
+    gameState = 2;
+  }
+}
+
+function Menu() {
+  background("#ababab");
+  text("MENU", 25, 45);
+  text("1. MENU", 25, 65);
+  text("2. START GAME", 25, 85)
+  text("3. GAME OVER",25 , 105 )
 }
 
 
 
+
+function gameOver() {
+  
+  
+  background("green");
+  text("GAME OVER", 25, 45);
+  x = 0;
+}
