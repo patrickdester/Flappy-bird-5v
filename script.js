@@ -48,20 +48,21 @@ class Pipes {
 
   checkCollision() {
 
-    if (bird.x + bird.w > this.x && bird.x < this.x + this.w) {  
-      this.color = ("red")
-      if (bird.y + bird.h > this.y && bird.y > this.y + this.h) {
-      } 
-      else color = "green"
+    if (bird.x + bird.w > this.x && bird.x < this.x + this.w) {
+
+      if (bird.y + bird.h > this.y && bird.y < this.y + this.h) {
+        this.color = ("red")
+      }
     }
-  }    
+
+  }
 }
 
 
 var bird;
 var pipes = [];
 var spacing;
-var pipe1, pipe2; 
+var pipe1, pipe2;
 
 function setup() {
   createCanvas(640, 360);
